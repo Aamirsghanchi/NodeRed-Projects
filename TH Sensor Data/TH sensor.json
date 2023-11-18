@@ -1,0 +1,635 @@
+[
+    {
+        "id": "df8b45424dbef331",
+        "type": "tab",
+        "label": "TH sensor Modbus View",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5956093e9e024fd6",
+        "type": "debug",
+        "z": "df8b45424dbef331",
+        "name": "msg1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "a248421a02b7cc10",
+        "type": "debug",
+        "z": "df8b45424dbef331",
+        "name": "msg2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "dd03c869c457c955",
+        "type": "modbus-response",
+        "z": "df8b45424dbef331",
+        "name": "",
+        "registerShowMax": 20,
+        "x": 350,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "7339d63c2fcf5119",
+        "type": "function",
+        "z": "df8b45424dbef331",
+        "name": "Humidity",
+        "func": "msg.payload=msg.payload[0]/10;//decimal value 1\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "5956093e9e024fd6",
+                "f6abffb9324f2ef0",
+                "3c0c4b9035867152",
+                "4405acd40fb549da"
+            ]
+        ]
+    },
+    {
+        "id": "4989a626e4b18ef5",
+        "type": "function",
+        "z": "df8b45424dbef331",
+        "name": "Temperature",
+        "func": "msg.payload=msg.payload[1]/10;//decimal value 1\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 260,
+        "wires": [
+            [
+                "a248421a02b7cc10",
+                "da841f9c91c8806a",
+                "dbfe8e2028c53a81",
+                "4405acd40fb549da"
+            ]
+        ]
+    },
+    {
+        "id": "f6abffb9324f2ef0",
+        "type": "ui_gauge",
+        "z": "df8b45424dbef331",
+        "name": "",
+        "group": "0bbfc6203cdaaeca",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "{{value}} %",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 510,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "da841f9c91c8806a",
+        "type": "ui_gauge",
+        "z": "df8b45424dbef331",
+        "name": "",
+        "group": "779ab378f8ab40b0",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "{{value}} °C",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 510,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "3c0c4b9035867152",
+        "type": "ui_chart",
+        "z": "df8b45424dbef331",
+        "name": "",
+        "group": "9df19a9785c216f6",
+        "order": 2,
+        "width": 10,
+        "height": 4,
+        "label": "Humidity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1e23b3",
+            "#0b65da",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 520,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e915477e258dfca8",
+        "type": "debug",
+        "z": "df8b45424dbef331",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "ec9fb263163f085b",
+        "type": "function",
+        "z": "df8b45424dbef331",
+        "name": "Json Data for Table",
+        "func": "\ntableData= flow.get(\"savedData\") || [];\n\ntableData.unshift({\n    \"Time\": new Date().toLocaleString(),\n    \"Humidity\": msg.payload[0] / 10,\n    \"Temperature\": msg.payload[1] / 10\n});\n\nmsg.payload = tableData;\nflow.set(\"savedData\", tableData);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 4,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 480,
+        "wires": [
+            [
+                "e915477e258dfca8",
+                "0be96ceeb7916355"
+            ]
+        ]
+    },
+    {
+        "id": "0be96ceeb7916355",
+        "type": "ui_table",
+        "z": "df8b45424dbef331",
+        "group": "49cd30b6255ba2cc",
+        "name": "",
+        "order": 1,
+        "width": 12,
+        "height": 4,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 510,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "dbfe8e2028c53a81",
+        "type": "ui_chart",
+        "z": "df8b45424dbef331",
+        "name": "",
+        "group": "9df19a9785c216f6",
+        "order": 1,
+        "width": 10,
+        "height": 4,
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1e30b3",
+            "#3c55d3",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 530,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cbf7778530442654",
+        "type": "function",
+        "z": "df8b45424dbef331",
+        "name": "convert to PDF",
+        "func": "const PDFDocument = require('pdfkit');\nconst fs = require('fs');\n\n// Data formatting (replace with your own data)\nconst data = [\n    { \n    // ... more data\n    \"Time\": new Date().toLocaleString(),\n    \"Humidity\": msg.payload[0] / 10,\n    \"Temperature\": msg.payload[1] / 10\n    }\n];\n\n// Create a PDF document\nconst doc = new PDFDocument();\ndoc.pipe(fs.createWriteStream('data_log.pdf'));\n\n// Add data to the PDF\ndoc.fontSize(12).text('Data Log', { align: 'center' });\ndata.forEach(entry => {\n    doc.text(`${entry.timestamp}: ${entry.temperature}`);\n});\n\n// Finalize the PDF\ndoc.end();\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 520,
+        "wires": [
+            [
+                "0977e345a6669928"
+            ]
+        ]
+    },
+    {
+        "id": "0977e345a6669928",
+        "type": "debug",
+        "z": "df8b45424dbef331",
+        "name": "debug 6",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "5706fd8cac6a3f65",
+        "type": "MSSQL",
+        "z": "df8b45424dbef331",
+        "mssqlCN": "f84e03b82a214cfe",
+        "name": "",
+        "query": "",
+        "outField": "payload",
+        "x": 780,
+        "y": 460,
+        "wires": [
+            [
+                "e5b34d16622e5731"
+            ]
+        ]
+    },
+    {
+        "id": "4405acd40fb549da",
+        "type": "join",
+        "z": "df8b45424dbef331",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 510,
+        "y": 300,
+        "wires": [
+            [
+                "8e069da9aa98289a",
+                "427f5f5da9126502",
+                "db6c10fdf3d2cb0a"
+            ]
+        ]
+    },
+    {
+        "id": "8e069da9aa98289a",
+        "type": "debug",
+        "z": "df8b45424dbef331",
+        "name": "msg1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "427f5f5da9126502",
+        "type": "function",
+        "z": "df8b45424dbef331",
+        "name": "function 2",
+        "func": "Dimdatetime= new Date(),\n    dformat= [Dimdatetime.getMonth() + 1,\n    Dimdatetime.getDate(),\n    Dimdatetime.getFullYear()].join('/') + ' ' +\n    [Dimdatetime.getHours(),\n    Dimdatetime.getMinutes(),\n    Dimdatetime.getSeconds()].join(':');\nHumidity = msg.payload[0];\nTemperature = msg.payload[1];\nvar datalog = dformat + \",\"+ Humidity +\"%,\"+ Temperature+\"°C\";\nmsg.payload= datalog;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 13,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 280,
+        "wires": [
+            [
+                "bbeeb1c10e508237",
+                "fc08a78790349761"
+            ]
+        ]
+    },
+    {
+        "id": "30a569f9caabfa7e",
+        "type": "modbus-getter",
+        "z": "df8b45424dbef331",
+        "name": "TH sensor",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "unitid": "5",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "2",
+        "server": "7347d46487ebe8f4",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": true,
+        "startDelayTime": "5",
+        "x": 170,
+        "y": 260,
+        "wires": [
+            [
+                "7339d63c2fcf5119",
+                "4989a626e4b18ef5",
+                "ec9fb263163f085b",
+                "cbf7778530442654"
+            ],
+            [
+                "dd03c869c457c955"
+            ]
+        ]
+    },
+    {
+        "id": "3d57f66b1c9de586",
+        "type": "inject",
+        "z": "df8b45424dbef331",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "30a569f9caabfa7e"
+            ]
+        ]
+    },
+    {
+        "id": "bbeeb1c10e508237",
+        "type": "debug",
+        "z": "df8b45424dbef331",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "fc08a78790349761",
+        "type": "file",
+        "z": "df8b45424dbef331",
+        "name": "CSV file",
+        "filename": "C:\\Users\\ACER\\Desktop\\sensor\\Nodered_sensordata.csv",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 800,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "db6c10fdf3d2cb0a",
+        "type": "function",
+        "z": "df8b45424dbef331",
+        "name": "function 3",
+        "func": "Dimdatetime= new Date(),\n    dformat= [Dimdatetime.getMonth() + 1,\n    Dimdatetime.getDate(),\n    Dimdatetime.getFullYear()].join('/') + ' ' +\n    [Dimdatetime.getHours(),\n    Dimdatetime.getMinutes(),\n    Dimdatetime.getSeconds()].join(':');\nHumidity = msg.payload[0];\nTemperature = msg.payload[1];\nDatabaseSQL=\"insert into dbo.[Table_1] values(\" + Humidity + \",\" + Temperature + \",'\" + dformat + \"')\"\nreturn {payload: DatabaseSQL}\n",
+        "outputs": 1,
+        "noerr": 14,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 460,
+        "wires": [
+            [
+                "5706fd8cac6a3f65"
+            ]
+        ]
+    },
+    {
+        "id": "e5b34d16622e5731",
+        "type": "debug",
+        "z": "df8b45424dbef331",
+        "name": "debug 8",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "0bbfc6203cdaaeca",
+        "type": "ui_group",
+        "name": "Humidity",
+        "tab": "75f7b3ef0c2e8bfe",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "779ab378f8ab40b0",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "75f7b3ef0c2e8bfe",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9df19a9785c216f6",
+        "type": "ui_group",
+        "name": "Trend",
+        "tab": "75f7b3ef0c2e8bfe",
+        "order": 3,
+        "disp": true,
+        "width": 10,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49cd30b6255ba2cc",
+        "type": "ui_group",
+        "name": "Report",
+        "tab": "75f7b3ef0c2e8bfe",
+        "order": 4,
+        "disp": true,
+        "width": 12,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f84e03b82a214cfe",
+        "type": "MSSQL-CN",
+        "name": "sensorSQL",
+        "server": "DESKTOP-PF4VRHL\\SQLEXPRESS",
+        "encyption": false,
+        "database": "SensorDB"
+    },
+    {
+        "id": "7347d46487ebe8f4",
+        "type": "modbus-client",
+        "name": "TH Sensor",
+        "clienttype": "serial",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "COM4",
+        "serialType": "RTU",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "5000",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "5",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "5000",
+        "parallelUnitIdsAllowed": true,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "75f7b3ef0c2e8bfe",
+        "type": "ui_tab",
+        "name": "TH-sensor",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
